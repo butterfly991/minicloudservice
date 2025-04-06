@@ -1,0 +1,43 @@
+add_library(cloud_core
+    kernel_base.cpp
+    parent_kernel.cpp
+    network_kernel.cpp
+    blockchain_kernel.cpp
+    task_manager.cpp
+    resource_manager.cpp
+    data_storage.cpp
+    thread_pool.cpp
+    error.cpp
+    system_info.cpp
+    kernel_flags.cpp
+    kernel_manager.cpp
+    cloud_integration.cpp
+    container_manager.cpp
+    distributed_engine.cpp
+)
+
+target_include_directories(cloud_core
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../include
+        ${Boost_INCLUDE_DIRS}
+        ${CURL_INCLUDE_DIRS}
+        ${JSONCPP_INCLUDE_DIRS}
+        ${CMAKE_SOURCE_DIR}/include
+        ${OPENSSL_INCLUDE_DIR}
+        ${CUDA_INCLUDE_DIRS}
+        ${NUMACTL_INCLUDE_DIRS}
+)
+
+target_link_libraries(cloud_core
+    PUBLIC
+        ${Boost_LIBRARIES}
+        ${CURL_LIBRARIES}
+        ${JSONCPP_LIBRARIES}
+        pthread
+        dl
+        ${OPENSSL_LIBRARIES}
+        ${OPENSSL_SSL_LIBRARY}
+        ${OPENSSL_CRYPTO_LIBRARY}
+        ${CUDA_LIBRARIES}
+        ${NUMACTL_LIBRARIES}
+) 
